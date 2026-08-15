@@ -460,6 +460,8 @@ ul, ol {
 }
 
 .hero-title {
+  font-size: clamp(1.9rem, 3.6vw, 3.3rem);
+  line-height: 1.22;
   margin-bottom: 1.25rem;
   letter-spacing: -0.03em;
 }

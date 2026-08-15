@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'video': {
       'basic': {
         price: '₹5,000 INR',
-        desc: 'Reels / Short-Form Shooting & Editing (Social media optimized cuts, color grading & sound mix).'
+        desc: 'Reels / Short-Form: ₹5,000 (Shooting & editing with sound mix either in Vertical or Horizontal).'
       },
       'standard': {
         price: '₹20,000 INR',

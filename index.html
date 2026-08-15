@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lalfamkima (Kim Molshoy) | Senior Analyst & Creative Freelancer</title>
+  <meta name="description" content="Official Portfolio of Lalfamkima (Kim Molshoy) - Senior Financial Operations Analyst, Video Editor, Event Photographer, Web Developer, and Google AdSense Specialist based in Pune, India.">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!-- Ambient Gradient Backgrounds -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-badge">K</span>
+        <span>Lalfamkima<span style="color: var(--cyan-400);">.</span></span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with 3D WebGL Canvas -->
+  <header class="hero-section">
+    <!-- 3D Canvas Background -->
+    <div id="threejs-hero-canvas"></div>
+
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content reveal-init">
+          <div class="hero-greeting">
+            <span class="status-dot"></span>
+            <span>Available for Freelance & Strategic Consulting</span>
+          </div>
+
+          <h1 class="hero-title">
+            Crafting Visuals, Web & <br>
+            <span class="highlight-cyan">Digital Growth</span> with <br>
+            <span class="highlight-amber">Analytical Precision</span>.
+          </h1>
+
+          <p class="hero-subtitle">
+            Hi, I'm <strong>Lalfamkima (Kim Molshoy)</strong> — Senior Analyst & Multi-Disciplinary Creator based in Pune, India.
+          </p>
+
+          <p class="hero-description">
+            Bridging high-performance corporate operations at <em>Johnson Controls</em> & <em>WNS</em> with premier freelance expertise in <strong>cinematic video editing</strong>, <strong>event photography</strong>, <strong>3D web development</strong>, and <strong>Google AdSense monetization</strong>.
+          </p>
+
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-shapes"></i>
+              <span>Explore My Work</span>
+            </a>
+            <a href="contact.html" class="btn btn-outline btn-lg">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Hire Me</span>
+            </a>
+          </div>
+
+          <!-- Hero Live Counters -->
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <h3 class="counter-val" data-target="5" data-suffix="+">5+</h3>
+              <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="counter-val" data-target="120" data-suffix="+">120+</h3>
+              <p>Projects Delivered</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="counter-val" data-target="1.8" data-prefix="" data-suffix="M+">1.8M+</h3>
+              <p>Ad Impressions / Traffic</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Avatar Card with Interactive Badges -->
+        <div class="hero-visual reveal-init reveal-delay-2">
+          <div class="hero-card-3d">
+            <div class="hero-avatar-wrapper">
+              <img src="assets/images/profile.jpg" alt="Lalfamkima Kim Molshoy" class="hero-avatar-img">
+            </div>
+
+            <!-- Floating 3D Badges -->
+            <div class="floating-badge badge-video">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <span class="badge-text-title">Video Editing</span>
+                <span class="badge-text-sub">4K Cinematic & Reels</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-photo">
+              <i class="fa-solid fa-camera"></i>
+              <div>
+                <span class="badge-text-title">Event Photoshoot</span>
+                <span class="badge-text-sub">Portraits & Weddings</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-finance">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <span class="badge-text-title">Finance & Analytics</span>
+                <span class="badge-text-sub">Senior Analyst</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Core Pillars / Services Section -->
+  <section class="section" style="background: rgba(15, 21, 35, 0.4);">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <div class="section-tag">What I Do</div>
+        <h2 class="section-title">Comprehensive Creative & Strategic Solutions</h2>
+        <p class="section-desc">From cinematic media production to revenue-generating web platforms and corporate operational problem-solving.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1: Video Editing -->
+        <div class="card-3d service-card reveal-init">
+          <div class="service-icon-box">
+            <i class="fa-solid fa-video"></i>
+          </div>
+          <h3 class="service-title">Cinematic Video Editing</h3>
+          <p class="service-desc">
+            High-retention storytelling, seamless transitions, sound design, color grading, and viral short-form editing for brands, creators, and corporate showcases.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> DaVinci Resolve & Premiere Pro</li>
+            <li><i class="fa-solid fa-check"></i> Color Grading & Audio Engineering</li>
+            <li><i class="fa-solid fa-check"></i> YouTube & Reels Optimization</li>
+          </ul>
+          <a href="services.html#video" class="service-link">
+            <span>Learn More</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 2: Event Photography -->
+        <div class="card-3d service-card amber reveal-init reveal-delay-1">
+          <div class="service-icon-box">
+            <i class="fa-solid fa-camera-retro"></i>
+          </div>
+          <h3 class="service-title">Event & Portrait Photoshoot</h3>
+          <p class="service-desc">
+            Capturing irreplaceable candid moments, celebrations, commercial brand portraits, and high-end lifestyle photography with golden hour bokeh.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Weddings & Corporate Events</li>
+            <li><i class="fa-solid fa-check"></i> Studio & Outdoor Portraiture</li>
+            <li><i class="fa-solid fa-check"></i> Lightroom Professional Retouching</li>
+          </ul>
+          <a href="services.html#photo" class="service-link">
+            <span>Learn More</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 3: Web Development -->
+        <div class="card-3d service-card emerald reveal-init reveal-delay-2">
+          <div class="service-icon-box">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <h3 class="service-title">Modern Web Development</h3>
+          <p class="service-desc">
+            Crafting lightning-fast, high-converting websites and interactive 3D web applications that elevate brand authority and deliver effortless UX.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Responsive Multi-Page Web Apps</li>
+            <li><i class="fa-solid fa-check"></i> Three.js 3D Interactive Graphics</li>
+            <li><i class="fa-solid fa-check"></i> SEO & Performance Optimization</li>
+          </ul>
+          <a href="services.html#web" class="service-link">
+            <span>Learn More</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 4: AdSense & Monetization -->
+        <div class="card-3d service-card indigo reveal-init reveal-delay-3">
+          <div class="service-icon-box">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+          </div>
+          <h3 class="service-title">Google AdSense & Growth</h3>
+          <p class="service-desc">
+            Maximizing site revenue through strategic ad placement, RPM/CPM optimization, audience traffic scaling, and rigorous compliance strategies.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Ad Layout & CTR Strategy</li>
+            <li><i class="fa-solid fa-check"></i> Policy Compliance & Auditing</li>
+            <li><i class="fa-solid fa-check"></i> Data Analytics & ROI Scaling</li>
+          </ul>
+          <a href="services.html#adsense" class="service-link">
+            <span>Learn More</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Project Spotlight -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal-init">
+        <div class="section-tag amber">Selected Works</div>
+        <h2 class="section-title">Recent Project Highlights</h2>
+        <p class="section-desc">Explore flagship productions spanning visual storytelling, interactive code, and monetization architectures.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Video Showcase -->
+        <div class="card-3d project-card reveal-init" data-category="video">
+          <div class="project-thumb-box">
+            <img src="assets/images/video_showcase.jpg" alt="Cinematic Video Editing Showcase" class="project-thumb">
+            <span class="project-category-tag"><i class="fa-solid fa-film"></i> Video Editing</span>
+            <div class="project-overlay-action">
+              <a href="project-detail.html" class="btn btn-primary btn-sm">
+                <span>View Case Study</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Urban Odyssey — Cinematic 4K Story</h3>
+            <p class="project-desc">A rhythm-driven urban commercial film featuring custom LUT color grading, sound design, and speed-ramp transitions.</p>
+            <div class="project-tags">
+              <span class="tech-tag">DaVinci Resolve</span>
+              <span class="tech-tag">Premiere Pro</span>
+              <span class="tech-tag">Sound FX</span>
+            </div>
+            <div class="project-footer">
+              <a href="project-detail.html" class="service-link">Read Summary &rarr;</a>
+              <span style="font-size: 0.82rem; color: var(--amber-400); font-weight: 600;">Featured Video</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Photography Showcase -->
+        <div class="card-3d project-card reveal-init reveal-delay-1" data-category="photo">
+          <div class="project-thumb-box">
+            <img src="assets/images/photo_showcase.jpg" alt="Event & Portrait Photography" class="project-thumb">
+            <span class="project-category-tag"><i class="fa-solid fa-camera"></i> Photography</span>
+            <div class="project-overlay-action">
+              <a href="projects.html" class="btn btn-primary btn-sm">
+                <span>Open Gallery</span>
+                <i class="fa-solid fa-images"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">The Celebration — Event Photography</h3>
+            <p class="project-desc">Documentary-style candid wedding and corporate event coverage focusing on golden hour lighting, raw emotion, and high detail.</p>
+            <div class="project-tags">
+              <span class="tech-tag">Sony Alpha</span>
+              <span class="tech-tag">Prime Lenses</span>
+              <span class="tech-tag">Lightroom Classic</span>
+            </div>
+            <div class="project-footer">
+              <a href="projects.html" class="service-link">View Photos &rarr;</a>
+              <span style="font-size: 0.82rem; color: var(--cyan-400); font-weight: 600;">50+ Shots</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: 3D Web App -->
+        <div class="card-3d project-card reveal-init reveal-delay-2" data-category="web">
+          <div class="project-thumb-box">
+            <img src="assets/images/webdev_showcase.jpg" alt="Nexus Digital 3D Platform" class="project-thumb">
+            <span class="project-category-tag"><i class="fa-solid fa-code"></i> Web Dev</span>
+            <div class="project-overlay-action">
+              <a href="projects.html" class="btn btn-primary btn-sm">
+                <span>View Web App</span>
+                <i class="fa-solid fa-globe"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Nexus Digital — 3D Innovation Hub</h3>
+            <p class="project-desc">A hyper-responsive dark-theme portfolio & platform featuring Three.js WebGL particle physics, glassmorphism cards, and fluid UX.</p>
+            <div class="project-tags">
+              <span class="tech-tag">HTML5 / CSS3</span>
+              <span class="tech-tag">Three.js</span>
+              <span class="tech-tag">WebGL</span>
+            </div>
+            <div class="project-footer">
+              <a href="projects.html" class="service-link">Explore Architecture &rarr;</a>
+              <span style="font-size: 0.82rem; color: var(--emerald-400); font-weight: 600;">100% Score</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;" class="reveal-init">
+        <a href="projects.html" class="btn btn-outline btn-lg">
+          <span>View Full Portfolio Gallery</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate Rigor Meets Creative Energy Section -->
+  <section class="section" style="background: rgba(10, 15, 28, 0.6);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;" class="reveal-init">
+        <div>
+          <div class="section-tag amber">About Kim</div>
+          <h2 class="section-title">The Unique Dual Advantage</h2>
+          <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            Why hire a creator who also has a deep corporate finance & operations background?
+          </p>
+          <p>
+            With years of senior analyst experience at <strong>Johnson Controls</strong> and operations leadership at <strong>WNS Global Services</strong>, I combine meticulous project management, deadline precision, and strategic ROI with high-octane creative talent.
+          </p>
+          <p>
+            Whether producing a commercial video campaign, designing a custom web application, or structuring an AdSense revenue funnel, every project is delivered on schedule, under budget, and built for measurable impact.
+          </p>
+          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <a href="about.html" class="btn btn-primary">
+              <span>Read My Story</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="https://www.instagram.com/kim.molshoy?utm_source=qr" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <i class="fa-brands fa-instagram" style="color: #e1306c;"></i>
+              <span>@kim.molshoy</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="card-3d" style="padding: 2.5rem; background: var(--bg-card);">
+          <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">
+            <i class="fa-solid fa-trophy" style="color: var(--amber-400); margin-right: 0.5rem;"></i>
+            Professional Accolades
+          </h3>
+          <ul style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <li style="display: flex; gap: 1rem; align-items: flex-start;">
+              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(56, 189, 248, 0.1); color: var(--cyan-400); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-briefcase"></i></span>
+              <div>
+                <strong style="color: var(--text-main); display: block;">Senior Account Analyst</strong>
+                <span style="color: var(--text-dim); font-size: 0.9rem;">Johnson Controls (10/2024 - Present) &bull; Pune</span>
+              </div>
+            </li>
+            <li style="display: flex; gap: 1rem; align-items: flex-start;">
+              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(245, 158, 11, 0.1); color: var(--amber-400); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-star"></i></span>
+              <div>
+                <strong style="color: var(--text-main); display: block;">Top Performer Recognized</strong>
+                <span style="color: var(--text-dim); font-size: 0.9rem;">WNS Global Services (4+ Years Operations Excellence)</span>
+              </div>
+            </li>
+            <li style="display: flex; gap: 1rem; align-items: flex-start;">
+              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(16, 185, 129, 0.1); color: var(--emerald-400); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa-solid fa-graduation-cap"></i></span>
+              <div>
+                <strong style="color: var(--text-main); display: block;">Master of Arts in Economics & BBA Finance</strong>
+                <span style="color: var(--text-dim); font-size: 0.9rem;">Tilak Maharashtra Vidyapeeth & Spicer Adventist University</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ready to Start CTA Banner -->
+  <section class="section" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="card-3d reveal-init" style="padding: 3.5rem; text-align: center; background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(8, 11, 18, 0.95)); border: 1px solid rgba(56, 189, 248, 0.25);">
+        <div class="section-tag amber">Get in Touch</div>
+        <h2 style="font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 1.2rem;">Have a Project or Production in Mind?</h2>
+        <p style="max-width: 600px; margin: 0 auto 2.2rem auto; font-size: 1.1rem;">
+          Whether it’s event photo & video coverage, full-stack website design, or digital marketing growth — let’s build something remarkable together.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;">
+          <a href="contact.html" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Book a Consultation</span>
+          </a>
+          <a href="https://wa.me/918974886722" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg" style="color: #25d366; border-color: rgba(37, 211, 102, 0.3);">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp Me</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <span class="logo-badge">K</span>
+            <span>Lalfamkima<span style="color: var(--cyan-400);">.</span></span>
+          </a>
+          <p>
+            Multi-disciplinary creator and Senior Operations Analyst dedicated to delivering world-class media, web, and growth solutions.
+          </p>
+          <div class="social-links-row">
+            <a href="https://www.instagram.com/kim.molshoy?utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram" aria-label="Instagram Profile">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://github.com/Kima1011" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub Profile">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:ms.kima96@gmail.com" class="social-icon-btn" aria-label="Send Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="tel:+918974886722" class="social-icon-btn" aria-label="Call Direct">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="projects.html">Portfolio & Gallery</a></li>
+            <li><a href="services.html">Freelance Services</a></li>
+            <li><a href="project-detail.html">Case Study Summary</a></li>
+            <li><a href="contact.html">Contact & Bookings</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Freelance Offerings</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#video">Cinematic Video Editing</a></li>
+            <li><a href="services.html#photo">Event & Portrait Photography</a></li>
+            <li><a href="services.html#web">Interactive 3D Web Apps</a></li>
+            <li><a href="services.html#adsense">Google AdSense Monetization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Direct Contact</h4>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+            <i class="fa-solid fa-location-dot" style="color: var(--cyan-400); margin-right: 0.5rem;"></i> Pune, Maharashtra, India 411027
+          </p>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+            <i class="fa-solid fa-envelope" style="color: var(--amber-400); margin-right: 0.5rem;"></i> ms.kima96@gmail.com
+          </p>
+          <p style="font-size: 0.92rem; color: var(--text-muted);">
+            <i class="fa-solid fa-phone" style="color: var(--emerald-400); margin-right: 0.5rem;"></i> +91 8974886722
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Lalfamkima (Kim Molshoy). All rights reserved.</p>
+        <p>Built with 3D WebGL & Modern CSS</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/tilt.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

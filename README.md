@@ -34,6 +34,17 @@ npx serve .
 
 ---
 
+## 📬 Automated Inquiry Email Notifications
+
+The portfolio is equipped with an automated email dispatch endpoint at [`api/contact.js`](file:///c:/Users/Administrator/OneDrive/Documents/Portfolio/api/contact.js) configured for Vercel Serverless deployment:
+- **Notification Destination**: `kimfrozz96@gmail.com`
+- **Authenticated Service**: Google Gmail SMTP using App Passcode authentication.
+- **Environment Variables** (Configurable in Vercel Settings -> Environment Variables):
+  - `GMAIL_USER`: `kimfrozz96@gmail.com`
+  - `GMAIL_APP_PASSWORD`: `sjodyldbuojdsrxb`
+
+---
+
 ## 👤 Profile & Contacts
 
 - **Name**: Lalfamkima (Kim Molshoy)
@@ -41,5 +52,7 @@ npx serve .
 - **Location**: Kolkata, India
 - **Phone**: [+91 8974886722](tel:+918974886722)
 - **Email**: [ms.kima96@gmail.com](mailto:ms.kima96@gmail.com)
+- **Inquiry Notification**: `kimfrozz96@gmail.com`
 - **Instagram**: [https://www.instagram.com/kim.molshoy](https://www.instagram.com/kim.molshoy?utm_source=qr)
 - **GitHub**: [https://github.com/Kima1011/Portfolio](https://github.com/Kima1011/Portfolio)
+

@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-lalfamkima",
+  "version": "1.0.0",
+  "description": "Lalfamkima (Kim Molshoy) 3D Portfolio Website",
+  "main": "api/contact.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}

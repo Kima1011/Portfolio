@@ -74,33 +74,84 @@ document.addEventListener('DOMContentLoaded', () => {
   const estimatorService = document.getElementById('estimator-service');
   const estimatorTier = document.getElementById('estimator-tier');
   const estimatorOutput = document.getElementById('estimator-total');
+  const estimatorNote = document.getElementById('estimator-note');
+
+  const pricingData = {
+    'video': {
+      'basic': {
+        price: '₹5,000 INR',
+        desc: 'Reels / Short-Form Shooting & Editing (Social media optimized cuts, color grading & sound mix).'
+      },
+      'standard': {
+        price: '₹20,000 INR',
+        desc: 'Outstation Shooting & Editing (Commercial production; price negotiable, excluding accommodation).'
+      },
+      'premium': {
+        price: '₹20,000+ INR',
+        desc: 'Outstation & Multi-Day Production (Shooting & editing campaign, excluding accommodation).'
+      }
+    },
+    'photo': {
+      'basic': {
+        price: '₹3,000 INR',
+        desc: 'Local Event & Portrait Session (2 Hours coverage, high-res edited photos delivered).'
+      },
+      'standard': {
+        price: '₹12,000 INR',
+        desc: 'Outstation Event Shoot (3 Hours coverage, excluding transportation & accommodation).'
+      },
+      'premium': {
+        price: '₹12,000+ INR',
+        desc: 'Full Outstation Event Coverage (Multi-hour documentary coverage, excluding travel & stay).'
+      }
+    },
+    'web': {
+      'basic': {
+        price: '₹10,000 INR',
+        desc: 'Normal Starter Website (Responsive 3D design, clean modern layout, fast loading, SEO setup).'
+      },
+      'standard': {
+        price: '₹18,000 INR',
+        desc: 'Advance Website (Includes interactive 3D WebGL features, Chatbot, Email confirmation & inquiry forms).'
+      },
+      'premium': {
+        price: '₹55,000 INR',
+        desc: 'Pro Full Platform (Includes interactive 3D, Chatbot, Email confirmation, Admin Dashboard, E-commerce, etc.).'
+      }
+    },
+    'adsense': {
+      'basic': {
+        price: '₹5,000 INR',
+        desc: 'Normal Audit & Setup (Starting from ₹5,000; depends on ad campaign scale).'
+      },
+      'standard': {
+        price: '₹22,000 INR',
+        desc: 'Advance Optimization (Ad placement restructuring, CTR & RPM uplift; price may vary based on campaign).'
+      },
+      'premium': {
+        price: '₹75,000 INR',
+        desc: 'Pro Campaign & Growth (Updates every 4 hours, verified lead generation based on curated database sources).'
+      }
+    }
+  };
 
   function updateEstimate() {
     if (!estimatorService || !estimatorTier || !estimatorOutput) return;
 
-    const baseCosts = {
-      'video': 150,
-      'photo': 200,
-      'web': 450,
-      'adsense': 300
-    };
-
-    const multiplier = {
-      'basic': 1.0,
-      'standard': 1.8,
-      'premium': 2.8
-    };
-
     const sVal = estimatorService.value;
     const tVal = estimatorTier.value;
 
-    const total = Math.round((baseCosts[sVal] || 200) * (multiplier[tVal] || 1.0));
-    estimatorOutput.innerText = `$${total} USD`;
+    const data = pricingData[sVal]?.[tVal] || { price: '₹18,000 INR', desc: '' };
+    estimatorOutput.innerText = data.price;
+    if (estimatorNote) {
+      estimatorNote.innerText = data.desc;
+    }
   }
 
   if (estimatorService && estimatorTier) {
     estimatorService.addEventListener('change', updateEstimate);
     estimatorTier.addEventListener('change', updateEstimate);
+    updateEstimate(); // Initialize on load
   }
 
   // 4. Quick Copy to Clipboard Buttons

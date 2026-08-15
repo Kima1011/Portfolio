@@ -37,7 +37,8 @@ npx serve .
 ## 👤 Profile & Contacts
 
 - **Name**: Lalfamkima (Kim Molshoy)
-- **Location**: Pune, Maharashtra, India 411027
+- **Role**: MNC Operations Analyst & Creative Freelancer
+- **Location**: Kolkata, India
 - **Phone**: [+91 8974886722](tel:+918974886722)
 - **Email**: [ms.kima96@gmail.com](mailto:ms.kima96@gmail.com)
 - **Instagram**: [https://www.instagram.com/kim.molshoy](https://www.instagram.com/kim.molshoy?utm_source=qr)

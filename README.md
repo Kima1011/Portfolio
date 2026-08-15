@@ -10,7 +10,7 @@ A multi-page portfolio website featuring interactive 3D WebGL animations, physic
 - **3D Physics Tilt Effects**: Cards, badges, and project thumbnails tilt dynamically in 3D perspective with realistic specular glare reflections.
 - **Multi-Page Architecture**:
   - `index.html`: Hero header with WebGL scene, live counter metrics, service pillars, featured productions, and testimonials.
-  - `about.html`: Biography, education timeline, and categorized skills matrix.
+  - `about.html`: Biography, profile visual card, and comprehensive skills & expertise matrix.
   - `projects.html`: Interactive filterable gallery (Video Editing, Photography, Web Dev, AdSense) with instant preview modal.
   - `services.html`: Detailed service packages, client workflow milestones, and dynamic project cost estimator.
   - `project-detail.html`: Case study summary page with short information, key takeaways, and production milestones.

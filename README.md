@@ -51,8 +51,7 @@ The portfolio is equipped with an automated email dispatch endpoint at [`api/con
 - **Role**: MNC Operations Analyst & Creative Freelancer
 - **Location**: Kolkata, India
 - **Phone**: [+91 8974886722](tel:+918974886722)
-- **Email**: [ms.kima96@gmail.com](mailto:ms.kima96@gmail.com)
-- **Inquiry Notification**: `kimfrozz96@gmail.com`
+- **Email**: [kimfrozz96@gmail.com](mailto:kimfrozz96@gmail.com)
 - **Instagram**: [https://www.instagram.com/kim.molshoy](https://www.instagram.com/kim.molshoy?utm_source=qr)
 - **GitHub**: [https://github.com/Kima1011/Portfolio](https://github.com/Kima1011/Portfolio)
 

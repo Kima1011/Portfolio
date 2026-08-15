@@ -1,0 +1,6 @@
+# Robots.txt for https://molshoyfotografi.vercel.app/
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://molshoyfotografi.vercel.app/sitemap.xml

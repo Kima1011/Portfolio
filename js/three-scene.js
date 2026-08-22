@@ -83,6 +83,64 @@ document.addEventListener('DOMContentLoaded', () => {
   torusMesh.position.set(-50, -20, -30);
   mainGroup.add(torusMesh);
 
+  // 4. Floating 3D Camera Icons with Physics Tilt Effects
+  function create3DCameraIcon(colorHex, scale = 1) {
+    const camGroup = new THREE.Group();
+
+    const mat = new THREE.MeshBasicMaterial({
+      color: colorHex,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35
+    });
+
+    const lensMat = new THREE.MeshBasicMaterial({
+      color: colorHex,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.45
+    });
+
+    // Camera Main Body
+    const body = new THREE.Mesh(new THREE.BoxGeometry(8 * scale, 5.5 * scale, 3.5 * scale), mat);
+    camGroup.add(body);
+
+    // Camera Lens Cylinder
+    const lens = new THREE.Mesh(new THREE.CylinderGeometry(2.2 * scale, 2.2 * scale, 2.8 * scale, 18), lensMat);
+    lens.rotation.x = Math.PI / 2;
+    lens.position.z = 2.2 * scale;
+    camGroup.add(lens);
+
+    // Lens Ring Detail
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(2.3 * scale, 0.25 * scale, 8, 18), lensMat);
+    ring.position.z = 3.6 * scale;
+    camGroup.add(ring);
+
+    // Top Viewfinder / Flash
+    const topBox = new THREE.Mesh(new THREE.BoxGeometry(2.8 * scale, 1.4 * scale, 2.2 * scale), mat);
+    topBox.position.set(0, 3.2 * scale, 0);
+    camGroup.add(topBox);
+
+    // Shutter Button
+    const button = new THREE.Mesh(new THREE.CylinderGeometry(0.6 * scale, 0.6 * scale, 0.8 * scale, 10), mat);
+    button.position.set(2.6 * scale, 3.1 * scale, 0);
+    camGroup.add(button);
+
+    return camGroup;
+  }
+
+  const cameraIcons = [
+    { mesh: create3DCameraIcon(0x38bdf8, 0.9), initPos: [32, 14, -10] },
+    { mesh: create3DCameraIcon(0xf59e0b, 0.85), initPos: [-38, -12, -18] },
+    { mesh: create3DCameraIcon(0x818cf8, 0.75), initPos: [-22, 22, -28] },
+    { mesh: create3DCameraIcon(0x38bdf8, 0.7), initPos: [40, -18, -25] }
+  ];
+
+  cameraIcons.forEach(cam => {
+    cam.mesh.position.set(...cam.initPos);
+    mainGroup.add(cam.mesh);
+  });
+
   // Mouse Interaction Variables
   let mouseX = 0;
   let mouseY = 0;
@@ -124,6 +182,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     torusMesh.rotation.x = -elapsedTime * 0.15;
     torusMesh.rotation.z = elapsedTime * 0.25;
+
+    // 3D Physics Tilt Effects and rotation for Camera Icons in background
+    cameraIcons.forEach((item, idx) => {
+      const speed = 0.18 + idx * 0.06;
+      const dir = idx % 2 === 0 ? 1 : -1;
+      item.mesh.rotation.x = Math.sin(elapsedTime * speed) * 0.3 + (targetY * 0.025 * dir);
+      item.mesh.rotation.y = elapsedTime * (0.22 * dir) + (targetX * 0.025 * dir);
+      item.mesh.rotation.z = Math.cos(elapsedTime * speed * 0.8) * 0.15;
+      item.mesh.position.y = item.initPos[1] + Math.sin(elapsedTime * 1.4 + idx * 1.5) * 1.8;
+    });
 
     // Subtle wave pulsing
     const pos = geometry.attributes.position.array;

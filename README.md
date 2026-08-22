@@ -48,7 +48,7 @@ The portfolio is equipped with an automated email dispatch endpoint at [`api/con
 ## 👤 Profile & Contacts
 
 - **Name**: Lalfamkima (Kim Molshoy)
-- **Role**: MNC Operations Analyst & Creative Freelancer
+- **Role**: Finance Analyst & Creative Freelancer
 - **Location**: Kolkata, India
 - **Email**: [kimfrozz96@gmail.com](mailto:kimfrozz96@gmail.com)
 - **Instagram**: [https://www.instagram.com/kim.molshoy](https://www.instagram.com/kim.molshoy?utm_source=qr)

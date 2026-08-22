@@ -100,178 +100,419 @@ document.addEventListener('DOMContentLoaded', () => {
   torusMesh.position.set(-52, -22, -32);
   mainGroup.add(torusMesh);
 
-  // 4. Realistic 3D Mirrorless/DSLR Camera Construction
-  function createRealistic3DCamera(accentHex, scale = 1) {
-    const camGroup = new THREE.Group();
-
-    // Shared high-grade materials
-    const bodyMat = new THREE.MeshStandardMaterial({
-      color: 0x141a26,
-      roughness: 0.4,
-      metalness: 0.7
-    });
-
-    const gripMat = new THREE.MeshStandardMaterial({
-      color: 0x0c1017,
-      roughness: 0.85,
-      metalness: 0.2
-    });
-
-    const metalMat = new THREE.MeshStandardMaterial({
-      color: 0xd1d5db,
-      roughness: 0.2,
-      metalness: 0.95
-    });
-
-    const barrelMat = new THREE.MeshStandardMaterial({
-      color: 0x111622,
-      roughness: 0.35,
-      metalness: 0.8
-    });
-
-    const glassMat = new THREE.MeshStandardMaterial({
-      color: accentHex,
-      roughness: 0.05,
-      metalness: 0.9,
-      transparent: true,
-      opacity: 0.85
-    });
-
-    const accentMat = new THREE.MeshStandardMaterial({
-      color: accentHex,
-      roughness: 0.25,
-      metalness: 0.85,
-      emissive: accentHex,
-      emissiveIntensity: 0.4
-    });
-
-    const screenMat = new THREE.MeshStandardMaterial({
-      color: 0x080c14,
-      roughness: 0.1,
-      metalness: 0.9
-    });
-
-    const ledMat = new THREE.MeshStandardMaterial({
-      color: 0xff3b30,
-      emissive: 0xff3b30,
-      emissiveIntensity: 0.9
-    });
-
-    // 1. Camera Main Body (Box)
-    const bodyGeo = new THREE.BoxGeometry(8.8 * scale, 5.8 * scale, 3.4 * scale);
-    const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
-    camGroup.add(bodyMesh);
-
-    // 2. Right Ergonomic Handgrip
-    const gripGeo = new THREE.BoxGeometry(2.4 * scale, 5.6 * scale, 2.0 * scale);
-    const gripMesh = new THREE.Mesh(gripGeo, gripMat);
-    gripMesh.position.set(3.4 * scale, 0, 1.2 * scale);
-    camGroup.add(gripMesh);
-
-    // 3. Viewfinder / Pentaprism Top Housing
-    const prismGeo = new THREE.CylinderGeometry(1.8 * scale, 2.8 * scale, 1.8 * scale, 4);
-    const prismMesh = new THREE.Mesh(prismGeo, bodyMat);
-    prismMesh.rotation.y = Math.PI / 4;
-    prismMesh.position.set(0, 3.6 * scale, 0);
-    camGroup.add(prismMesh);
-
-    // 4. Hotshoe Bracket on Top of Prism
-    const hotshoeGeo = new THREE.BoxGeometry(1.6 * scale, 0.4 * scale, 1.8 * scale);
-    const hotshoeMesh = new THREE.Mesh(hotshoeGeo, metalMat);
-    hotshoeMesh.position.set(0, 4.6 * scale, 0);
-    camGroup.add(hotshoeMesh);
-
-    // 5. Lens Mount Chrome Ring
-    const mountGeo = new THREE.CylinderGeometry(2.6 * scale, 2.6 * scale, 0.6 * scale, 32);
-    const mountMesh = new THREE.Mesh(mountGeo, metalMat);
-    mountMesh.rotation.x = Math.PI / 2;
-    mountMesh.position.set(-0.6 * scale, 0.1 * scale, 1.8 * scale);
-    camGroup.add(mountMesh);
-
-    // 6. Main Lens Outer Barrel
-    const lensGeo = new THREE.CylinderGeometry(2.4 * scale, 2.4 * scale, 3.6 * scale, 32);
-    const lensMesh = new THREE.Mesh(lensGeo, barrelMat);
-    lensMesh.rotation.x = Math.PI / 2;
-    lensMesh.position.set(-0.6 * scale, 0.1 * scale, 3.6 * scale);
-    camGroup.add(lensMesh);
-
-    // 7. Focus / Zoom Ribbed Rubber Rings
-    const ring1Geo = new THREE.CylinderGeometry(2.48 * scale, 2.48 * scale, 1.0 * scale, 32);
-    const ring1Mesh = new THREE.Mesh(ring1Geo, gripMat);
-    ring1Mesh.rotation.x = Math.PI / 2;
-    ring1Mesh.position.set(-0.6 * scale, 0.1 * scale, 3.0 * scale);
-    camGroup.add(ring1Mesh);
-
-    // 8. Luxury Accent Ring (Red/Cyan/Gold G-Master Ring)
-    const accentRingGeo = new THREE.TorusGeometry(2.45 * scale, 0.12 * scale, 8, 32);
-    const accentRingMesh = new THREE.Mesh(accentRingGeo, accentMat);
-    accentRingMesh.position.set(-0.6 * scale, 0.1 * scale, 5.0 * scale);
-    camGroup.add(accentRingMesh);
-
-    // 9. Front Lens Hood Flange
-    const hoodGeo = new THREE.CylinderGeometry(2.6 * scale, 2.4 * scale, 0.8 * scale, 32);
-    const hoodMesh = new THREE.Mesh(hoodGeo, barrelMat);
-    hoodMesh.rotation.x = Math.PI / 2;
-    hoodMesh.position.set(-0.6 * scale, 0.1 * scale, 5.4 * scale);
-    camGroup.add(hoodMesh);
-
-    // 10. Front Curved Optical Glass Element
-    const glassGeo = new THREE.SphereGeometry(2.2 * scale, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
-    const glassMesh = new THREE.Mesh(glassGeo, glassMat);
-    glassMesh.rotation.x = -Math.PI / 2;
-    glassMesh.position.set(-0.6 * scale, 0.1 * scale, 5.2 * scale);
-    camGroup.add(glassMesh);
-
-    // 11. Top Mode Dial (Left)
-    const dialGeo = new THREE.CylinderGeometry(1.0 * scale, 1.0 * scale, 0.8 * scale, 16);
-    const dialMesh = new THREE.Mesh(dialGeo, metalMat);
-    dialMesh.position.set(-3.0 * scale, 3.2 * scale, 0);
-    camGroup.add(dialMesh);
-
-    // 12. Shutter Release Button on Right Grip
-    const shutterGeo = new THREE.CylinderGeometry(0.6 * scale, 0.6 * scale, 0.6 * scale, 16);
-    const shutterMesh = new THREE.Mesh(shutterGeo, metalMat);
-    shutterMesh.position.set(3.2 * scale, 3.1 * scale, 0.8 * scale);
-    camGroup.add(shutterMesh);
-
-    // 13. Secondary Control Wheel
-    const wheelGeo = new THREE.CylinderGeometry(0.8 * scale, 0.8 * scale, 0.5 * scale, 16);
-    const wheelMesh = new THREE.Mesh(wheelGeo, metalMat);
-    wheelMesh.position.set(2.0 * scale, 3.1 * scale, -0.4 * scale);
-    camGroup.add(wheelMesh);
-
-    // 14. Red AF Assist / Tally LED Lamp
-    const ledGeo = new THREE.SphereGeometry(0.3 * scale, 12, 12);
-    const ledMesh = new THREE.Mesh(ledGeo, ledMat);
-    ledMesh.position.set(1.5 * scale, 1.8 * scale, 1.8 * scale);
-    camGroup.add(ledMesh);
-
-    // 15. Rear Large LCD Monitor Screen
-    const screenGeo = new THREE.BoxGeometry(6.2 * scale, 4.2 * scale, 0.15 * scale);
-    const screenMesh = new THREE.Mesh(screenGeo, screenMat);
-    screenMesh.position.set(0.2 * scale, 0, -1.75 * scale);
-    camGroup.add(screenMesh);
-
-    // 16. Rear Viewfinder Eyepiece
-    const eyeGeo = new THREE.BoxGeometry(1.8 * scale, 1.2 * scale, 0.6 * scale);
-    const eyeMesh = new THREE.Mesh(eyeGeo, gripMat);
-    eyeMesh.position.set(0, 3.5 * scale, -1.8 * scale);
-    camGroup.add(eyeMesh);
-
-    return camGroup;
+  // 4. Procedural 3D Camera Gear Models (Matching All 10 Gears from Reference Image)
+  function createSharedMaterials(accentHex) {
+    return {
+      body: new THREE.MeshStandardMaterial({ color: 0x141a26, roughness: 0.4, metalness: 0.7 }),
+      grip: new THREE.MeshStandardMaterial({ color: 0x0c1017, roughness: 0.85, metalness: 0.2 }),
+      metal: new THREE.MeshStandardMaterial({ color: 0xd1d5db, roughness: 0.2, metalness: 0.95 }),
+      gold: new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.25, metalness: 0.9 }),
+      barrel: new THREE.MeshStandardMaterial({ color: 0x111622, roughness: 0.35, metalness: 0.8 }),
+      glass: new THREE.MeshStandardMaterial({ color: accentHex, roughness: 0.05, metalness: 0.9, transparent: true, opacity: 0.85 }),
+      accent: new THREE.MeshStandardMaterial({ color: accentHex, roughness: 0.25, metalness: 0.85, emissive: accentHex, emissiveIntensity: 0.4 }),
+      screen: new THREE.MeshStandardMaterial({ color: 0x080c14, roughness: 0.1, metalness: 0.9 }),
+      led: new THREE.MeshStandardMaterial({ color: 0xff3b30, emissive: 0xff3b30, emissiveIntensity: 0.9 }),
+      diffuser: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.1, transparent: true, opacity: 0.9, emissive: 0xffffff, emissiveIntensity: 0.35 }),
+      silver: new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.15, metalness: 0.95 })
+    };
   }
 
-  // Instantiate realistic 3D camera models at balanced background depths
-  const cameraIcons = [
-    { mesh: createRealistic3DCamera(0x38bdf8, 1.05), initPos: [34, 16, -12] },
-    { mesh: createRealistic3DCamera(0xf59e0b, 0.95), initPos: [-38, -14, -18] },
-    { mesh: createRealistic3DCamera(0x818cf8, 0.85), initPos: [-24, 22, -28] },
-    { mesh: createRealistic3DCamera(0x38bdf8, 0.8), initPos: [42, -18, -24] }
+  // Gear 1: DSLR / Mirrorless Camera Body
+  function create3DCamera(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Body
+    const body = new THREE.Mesh(new THREE.BoxGeometry(8.8 * scale, 5.8 * scale, 3.4 * scale), m.body);
+    grp.add(body);
+
+    // Grip
+    const grip = new THREE.Mesh(new THREE.BoxGeometry(2.4 * scale, 5.6 * scale, 2.0 * scale), m.grip);
+    grip.position.set(3.4 * scale, 0, 1.2 * scale);
+    grp.add(grip);
+
+    // Prism & Hotshoe
+    const prism = new THREE.Mesh(new THREE.CylinderGeometry(1.8 * scale, 2.8 * scale, 1.8 * scale, 4), m.body);
+    prism.rotation.y = Math.PI / 4;
+    prism.position.set(0, 3.6 * scale, 0);
+    grp.add(prism);
+
+    const hotshoe = new THREE.Mesh(new THREE.BoxGeometry(1.6 * scale, 0.4 * scale, 1.8 * scale), m.metal);
+    hotshoe.position.set(0, 4.6 * scale, 0);
+    grp.add(hotshoe);
+
+    // Lens & Mount
+    const mount = new THREE.Mesh(new THREE.CylinderGeometry(2.6 * scale, 2.6 * scale, 0.6 * scale, 32), m.metal);
+    mount.rotation.x = Math.PI / 2;
+    mount.position.set(-0.6 * scale, 0.1 * scale, 1.8 * scale);
+    grp.add(mount);
+
+    const lens = new THREE.Mesh(new THREE.CylinderGeometry(2.4 * scale, 2.4 * scale, 3.6 * scale, 32), m.barrel);
+    lens.rotation.x = Math.PI / 2;
+    lens.position.set(-0.6 * scale, 0.1 * scale, 3.6 * scale);
+    grp.add(lens);
+
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(2.45 * scale, 0.12 * scale, 8, 32), m.accent);
+    ring.position.set(-0.6 * scale, 0.1 * scale, 5.0 * scale);
+    grp.add(ring);
+
+    const glass = new THREE.Mesh(new THREE.SphereGeometry(2.2 * scale, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), m.glass);
+    glass.rotation.x = -Math.PI / 2;
+    glass.position.set(-0.6 * scale, 0.1 * scale, 5.2 * scale);
+    grp.add(glass);
+
+    // Dials, Shutter, LED & Screen
+    const dial = new THREE.Mesh(new THREE.CylinderGeometry(1.0 * scale, 1.0 * scale, 0.8 * scale, 16), m.metal);
+    dial.position.set(-3.0 * scale, 3.2 * scale, 0);
+    grp.add(dial);
+
+    const shutter = new THREE.Mesh(new THREE.CylinderGeometry(0.6 * scale, 0.6 * scale, 0.6 * scale, 16), m.metal);
+    shutter.position.set(3.2 * scale, 3.1 * scale, 0.8 * scale);
+    grp.add(shutter);
+
+    const led = new THREE.Mesh(new THREE.SphereGeometry(0.3 * scale, 12, 12), m.led);
+    led.position.set(1.5 * scale, 1.8 * scale, 1.8 * scale);
+    grp.add(led);
+
+    const screen = new THREE.Mesh(new THREE.BoxGeometry(6.2 * scale, 4.2 * scale, 0.15 * scale), m.screen);
+    screen.position.set(0.2 * scale, 0, -1.75 * scale);
+    grp.add(screen);
+
+    return grp;
+  }
+
+  // Gear 2: Camera Telephoto / Zoom Lens
+  function create3DTelephotoLens(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Bayonet Mount
+    const mount = new THREE.Mesh(new THREE.CylinderGeometry(2.2 * scale, 2.2 * scale, 0.8 * scale, 32), m.metal);
+    mount.position.y = -3.6 * scale;
+    grp.add(mount);
+
+    // Main Barrel
+    const barrel = new THREE.Mesh(new THREE.CylinderGeometry(2.3 * scale, 2.1 * scale, 6.8 * scale, 32), m.barrel);
+    grp.add(barrel);
+
+    // Zoom & Focus Ribbed Rings
+    const ring1 = new THREE.Mesh(new THREE.CylinderGeometry(2.45 * scale, 2.45 * scale, 1.4 * scale, 32), m.grip);
+    ring1.position.y = -1.2 * scale;
+    grp.add(ring1);
+
+    const ring2 = new THREE.Mesh(new THREE.CylinderGeometry(2.48 * scale, 2.48 * scale, 1.6 * scale, 32), m.grip);
+    ring2.position.y = 1.4 * scale;
+    grp.add(ring2);
+
+    // Accent Ring
+    const acc = new THREE.Mesh(new THREE.TorusGeometry(2.35 * scale, 0.1 * scale, 8, 32), m.accent);
+    acc.rotation.x = Math.PI / 2;
+    acc.position.y = 2.8 * scale;
+    grp.add(acc);
+
+    // Front Hood & Glass
+    const hood = new THREE.Mesh(new THREE.CylinderGeometry(2.55 * scale, 2.35 * scale, 0.9 * scale, 32), m.barrel);
+    hood.position.y = 3.6 * scale;
+    grp.add(hood);
+
+    const glass = new THREE.Mesh(new THREE.SphereGeometry(2.1 * scale, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), m.glass);
+    glass.position.y = 3.6 * scale;
+    grp.add(glass);
+
+    return grp;
+  }
+
+  // Gear 3: Camera Tripod
+  function create3DTripod(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Ball Head & Quick Release Plate
+    const plate = new THREE.Mesh(new THREE.BoxGeometry(2.4 * scale, 0.4 * scale, 2.4 * scale), m.metal);
+    plate.position.y = 5.2 * scale;
+    grp.add(plate);
+
+    const ball = new THREE.Mesh(new THREE.SphereGeometry(1.1 * scale, 16, 16), m.metal);
+    ball.position.y = 4.2 * scale;
+    grp.add(ball);
+
+    // Pan Handle
+    const handle = new THREE.Mesh(new THREE.CylinderGeometry(0.2 * scale, 0.2 * scale, 3.4 * scale, 12), m.grip);
+    handle.rotation.z = Math.PI / 2.5;
+    handle.position.set(1.6 * scale, 4.4 * scale, 0);
+    grp.add(handle);
+
+    // Central Spider Hub
+    const hub = new THREE.Mesh(new THREE.CylinderGeometry(1.4 * scale, 1.4 * scale, 0.8 * scale, 6), m.body);
+    hub.position.y = 3.2 * scale;
+    grp.add(hub);
+
+    // 3 Telescopic Legs
+    for (let i = 0; i < 3; i++) {
+      const angle = (i * Math.PI * 2) / 3;
+      const legGrp = new THREE.Group();
+      
+      const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.32 * scale, 0.22 * scale, 11.0 * scale, 12), m.metal);
+      leg.position.y = -5.5 * scale;
+      legGrp.add(leg);
+
+      const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.42 * scale, 0.42 * scale, 0.8 * scale, 12), m.accent);
+      collar.position.y = -4.0 * scale;
+      legGrp.add(collar);
+
+      const foot = new THREE.Mesh(new THREE.SphereGeometry(0.4 * scale, 8, 8), m.grip);
+      foot.position.y = -11.0 * scale;
+      legGrp.add(foot);
+
+      legGrp.position.set(Math.cos(angle) * 1.0 * scale, 3.0 * scale, Math.sin(angle) * 1.0 * scale);
+      legGrp.rotation.z = Math.cos(angle) * 0.28;
+      legGrp.rotation.x = Math.sin(angle) * 0.28;
+      grp.add(legGrp);
+    }
+
+    return grp;
+  }
+
+  // Gear 4: Speedlight Camera Flash
+  function create3DSpeedlight(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Hotshoe Mount Foot
+    const foot = new THREE.Mesh(new THREE.BoxGeometry(1.4 * scale, 0.4 * scale, 1.4 * scale), m.metal);
+    foot.position.y = -3.8 * scale;
+    grp.add(foot);
+
+    // Lower Main Body Column
+    const body = new THREE.Mesh(new THREE.BoxGeometry(3.0 * scale, 3.8 * scale, 2.4 * scale), m.body);
+    body.position.y = -1.8 * scale;
+    grp.add(body);
+
+    const screen = new THREE.Mesh(new THREE.BoxGeometry(2.0 * scale, 1.6 * scale, 0.1 * scale), m.accent);
+    screen.position.set(0, -1.8 * scale, -1.25 * scale);
+    grp.add(screen);
+
+    // Swivel / Tilt Elbow
+    const elbow = new THREE.Mesh(new THREE.CylinderGeometry(1.1 * scale, 1.1 * scale, 2.2 * scale, 16), m.metal);
+    elbow.rotation.z = Math.PI / 2;
+    elbow.position.y = 0.4 * scale;
+    grp.add(elbow);
+
+    // Flash Head
+    const head = new THREE.Mesh(new THREE.BoxGeometry(3.8 * scale, 2.2 * scale, 4.0 * scale), m.body);
+    head.position.set(0, 1.6 * scale, 0.8 * scale);
+    grp.add(head);
+
+    // Frosted Fresnel Diffuser Lens
+    const diffuser = new THREE.Mesh(new THREE.BoxGeometry(3.4 * scale, 1.8 * scale, 0.2 * scale), m.diffuser);
+    diffuser.position.set(0, 1.6 * scale, 2.85 * scale);
+    grp.add(diffuser);
+
+    return grp;
+  }
+
+  // Gear 5: SD Memory Card
+  function create3DSDCard(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Main Card Body Plate
+    const body = new THREE.Mesh(new THREE.BoxGeometry(4.4 * scale, 6.2 * scale, 0.4 * scale), m.body);
+    grp.add(body);
+
+    // Top Right Chamfer Notch
+    const notch = new THREE.Mesh(new THREE.BoxGeometry(1.2 * scale, 1.2 * scale, 0.5 * scale), m.metal);
+    notch.rotation.z = Math.PI / 4;
+    notch.position.set(2.2 * scale, 3.1 * scale, 0);
+    grp.add(notch);
+
+    // Gold Pins
+    for (let i = -3; i <= 3; i++) {
+      const pin = new THREE.Mesh(new THREE.BoxGeometry(0.24 * scale, 1.2 * scale, 0.06 * scale), m.gold);
+      pin.position.set(i * 0.48 * scale, 2.2 * scale, -0.22 * scale);
+      grp.add(pin);
+    }
+
+    // Label Plate
+    const label = new THREE.Mesh(new THREE.BoxGeometry(3.6 * scale, 3.4 * scale, 0.08 * scale), m.accent);
+    label.position.set(0, -0.8 * scale, 0.22 * scale);
+    grp.add(label);
+
+    // Lock Switch
+    const lock = new THREE.Mesh(new THREE.BoxGeometry(0.2 * scale, 0.8 * scale, 0.4 * scale), m.gold);
+    lock.position.set(-2.25 * scale, 0.5 * scale, 0);
+    grp.add(lock);
+
+    return grp;
+  }
+
+  // Gear 6: Camera Shoulder / Messenger Bag
+  function create3DCameraBag(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Main Padded Compartment
+    const body = new THREE.Mesh(new THREE.BoxGeometry(7.8 * scale, 5.8 * scale, 4.4 * scale), m.body);
+    grp.add(body);
+
+    // Front Weather Protective Flap
+    const flap = new THREE.Mesh(new THREE.BoxGeometry(8.0 * scale, 4.4 * scale, 1.0 * scale), m.grip);
+    flap.position.set(0, 0.6 * scale, 2.4 * scale);
+    grp.add(flap);
+
+    // Metal Lock Buckle
+    const buckle = new THREE.Mesh(new THREE.BoxGeometry(1.2 * scale, 1.8 * scale, 0.5 * scale), m.accent);
+    buckle.position.set(0, -0.8 * scale, 2.95 * scale);
+    grp.add(buckle);
+
+    // Arched Top Carry Handle
+    const handle = new THREE.Mesh(new THREE.TorusGeometry(1.8 * scale, 0.35 * scale, 8, 24, Math.PI), m.metal);
+    handle.position.set(0, 3.0 * scale, 0);
+    grp.add(handle);
+
+    // Side Accessory Pockets
+    const pLeft = new THREE.Mesh(new THREE.BoxGeometry(0.8 * scale, 3.8 * scale, 3.2 * scale), m.grip);
+    pLeft.position.set(-4.2 * scale, -0.2 * scale, 0);
+    grp.add(pLeft);
+
+    const pRight = new THREE.Mesh(new THREE.BoxGeometry(0.8 * scale, 3.8 * scale, 3.2 * scale), m.grip);
+    pRight.position.set(4.2 * scale, -0.2 * scale, 0);
+    grp.add(pRight);
+
+    return grp;
+  }
+
+  // Gear 7: Circular Light Reflector
+  function create3DReflector(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Flexible Outer Spring Steel Ring
+    const hoop = new THREE.Mesh(new THREE.TorusGeometry(4.8 * scale, 0.2 * scale, 12, 36), m.body);
+    grp.add(hoop);
+
+    // Highly Reflective Metallic Surface
+    const disc = new THREE.Mesh(new THREE.CylinderGeometry(4.6 * scale, 4.6 * scale, 0.08 * scale, 36), m.silver);
+    disc.rotation.x = Math.PI / 2;
+    grp.add(disc);
+
+    // Angled Kickstand Leg
+    const stand = new THREE.Mesh(new THREE.CylinderGeometry(0.16 * scale, 0.16 * scale, 5.4 * scale, 12), m.accent);
+    stand.rotation.x = -Math.PI / 5;
+    stand.position.set(0, -2.0 * scale, -2.0 * scale);
+    grp.add(stand);
+
+    return grp;
+  }
+
+  // Gear 8: Studio Softbox Lighting
+  function create3DSoftbox(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Flared Pyramidal Reflector Hood
+    const cone = new THREE.Mesh(new THREE.CylinderGeometry(5.4 * scale, 1.8 * scale, 4.8 * scale, 4), m.body);
+    cone.rotation.y = Math.PI / 4;
+    cone.rotation.x = Math.PI / 2;
+    cone.position.set(0, 3.0 * scale, 1.8 * scale);
+    grp.add(cone);
+
+    // Glowing White Diffusion Screen Panel
+    const diffuser = new THREE.Mesh(new THREE.BoxGeometry(7.2 * scale, 7.2 * scale, 0.15 * scale), m.diffuser);
+    diffuser.position.set(0, 3.0 * scale, 4.25 * scale);
+    grp.add(diffuser);
+
+    // Rear Strobe Light Housing
+    const strobe = new THREE.Mesh(new THREE.CylinderGeometry(1.2 * scale, 1.2 * scale, 2.0 * scale, 16), m.metal);
+    strobe.rotation.x = Math.PI / 2;
+    strobe.position.set(0, 3.0 * scale, -1.0 * scale);
+    grp.add(strobe);
+
+    // Telescopic Light Stand Mast
+    const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.28 * scale, 0.28 * scale, 8.5 * scale, 12), m.metal);
+    mast.position.set(0, -1.5 * scale, -1.0 * scale);
+    grp.add(mast);
+
+    return grp;
+  }
+
+  // Gear 9: Camera Battery Pack
+  function create3DBattery(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Battery Main Casing
+    const body = new THREE.Mesh(new THREE.BoxGeometry(4.2 * scale, 5.8 * scale, 2.4 * scale), m.body);
+    grp.add(body);
+
+    // Terminal Guide Slots
+    const notch = new THREE.Mesh(new THREE.BoxGeometry(2.8 * scale, 0.6 * scale, 0.4 * scale), m.metal);
+    notch.position.set(0, 2.9 * scale, 0.8 * scale);
+    grp.add(notch);
+
+    // Gold Terminal Contacts
+    for (let i = -1; i <= 1; i++) {
+      const pin = new THREE.Mesh(new THREE.BoxGeometry(0.4 * scale, 0.15 * scale, 0.8 * scale), m.gold);
+      pin.position.set(i * 0.8 * scale, 2.95 * scale, -0.4 * scale);
+      grp.add(pin);
+    }
+
+    // Glowing Lightning Bolt Glyph
+    const boltTop = new THREE.Mesh(new THREE.BoxGeometry(0.6 * scale, 1.8 * scale, 0.08 * scale), m.accent);
+    boltTop.rotation.z = -Math.PI / 6;
+    boltTop.position.set(-0.3 * scale, 0.6 * scale, 1.25 * scale);
+    grp.add(boltTop);
+
+    const boltBot = new THREE.Mesh(new THREE.BoxGeometry(0.6 * scale, 1.8 * scale, 0.08 * scale), m.accent);
+    boltBot.rotation.z = -Math.PI / 6;
+    boltBot.position.set(0.3 * scale, -0.6 * scale, 1.25 * scale);
+    grp.add(boltBot);
+
+    return grp;
+  }
+
+  // Gear 10: Camera Neck / Shoulder Strap
+  function create3DCameraStrap(accentHex, scale = 1) {
+    const grp = new THREE.Group();
+    const m = createSharedMaterials(accentHex);
+
+    // Curved Woven Strap Band
+    const band = new THREE.Mesh(new THREE.TorusGeometry(4.4 * scale, 0.32 * scale, 12, 36, Math.PI * 1.5), m.grip);
+    grp.add(band);
+
+    // Leather Shoulder Cushion
+    const pad = new THREE.Mesh(new THREE.TorusGeometry(4.45 * scale, 0.5 * scale, 8, 24, Math.PI * 0.7), m.accent);
+    grp.add(pad);
+
+    // Quick-Release Buckle Clips
+    const clip1 = new THREE.Mesh(new THREE.BoxGeometry(0.8 * scale, 1.2 * scale, 0.6 * scale), m.metal);
+    clip1.position.set(4.4 * scale, 0, 0);
+    grp.add(clip1);
+
+    const clip2 = new THREE.Mesh(new THREE.BoxGeometry(0.8 * scale, 1.2 * scale, 0.6 * scale), m.metal);
+    clip2.position.set(0, -4.4 * scale, 0);
+    grp.add(clip2);
+
+    return grp;
+  }
+
+  // Instantiate all 10 camera gears from the photo at balanced 3D background coordinates
+  const cameraGears = [
+    { mesh: create3DCamera(0x38bdf8, 1.0), initPos: [34, 16, -12] },          // 1. DSLR Camera Body
+    { mesh: create3DTelephotoLens(0xf59e0b, 0.9), initPos: [-36, -14, -18] },   // 2. Camera Lens
+    { mesh: create3DTripod(0x38bdf8, 0.75), initPos: [-44, 18, -26] },         // 3. Tripod
+    { mesh: create3DSpeedlight(0xf59e0b, 0.85), initPos: [42, -18, -22] },      // 4. Flash / Speedlight
+    { mesh: create3DSDCard(0x818cf8, 0.85), initPos: [20, 28, -20] },          // 5. SD Memory Card
+    { mesh: create3DCameraBag(0x38bdf8, 0.85), initPos: [-22, -26, -24] },     // 6. Camera Bag
+    { mesh: create3DReflector(0xf59e0b, 0.8), initPos: [48, 4, -28] },         // 7. Light Reflector
+    { mesh: create3DSoftbox(0x38bdf8, 0.75), initPos: [-48, 2, -28] },         // 8. Studio Softbox
+    { mesh: create3DBattery(0xf59e0b, 0.85), initPos: [10, -28, -18] },         // 9. Camera Battery
+    { mesh: create3DCameraStrap(0x818cf8, 0.8), initPos: [-14, 26, -16] }      // 10. Camera Strap
   ];
 
-  cameraIcons.forEach(cam => {
-    cam.mesh.position.set(...cam.initPos);
-    mainGroup.add(cam.mesh);
+  cameraGears.forEach(gear => {
+    gear.mesh.position.set(...gear.initPos);
+    mainGroup.add(gear.mesh);
   });
 
   // Mouse Interaction Variables
@@ -313,21 +554,21 @@ document.addEventListener('DOMContentLoaded', () => {
     mainGroup.rotation.y = elapsedTime * 0.03 + targetX * 0.008;
     mainGroup.rotation.x = elapsedTime * 0.015 + targetY * 0.008;
 
-    // Rotate geometric meshes independently
+    // Rotate geometric wireframe meshes
     wireMesh.rotation.x = elapsedTime * 0.2;
     wireMesh.rotation.y = elapsedTime * 0.3;
     
     torusMesh.rotation.x = -elapsedTime * 0.15;
     torusMesh.rotation.z = elapsedTime * 0.25;
 
-    // 3D Physics Tilt Effects and rotation for Camera Icons in background
-    cameraIcons.forEach((item, idx) => {
-      const speed = 0.15 + idx * 0.04;
+    // 3D Physics Tilt Effects and rotation for All 10 Camera Gears in background
+    cameraGears.forEach((item, idx) => {
+      const speed = 0.14 + (idx % 4) * 0.04;
       const dir = idx % 2 === 0 ? 1 : -1;
       item.mesh.rotation.x = Math.sin(elapsedTime * speed) * 0.25 + (targetY * 0.02 * dir);
-      item.mesh.rotation.y = elapsedTime * (0.18 * dir) + (targetX * 0.02 * dir);
+      item.mesh.rotation.y = elapsedTime * (0.16 * dir) + (targetX * 0.02 * dir);
       item.mesh.rotation.z = Math.cos(elapsedTime * speed * 0.8) * 0.12;
-      item.mesh.position.y = item.initPos[1] + Math.sin(elapsedTime * 1.2 + idx * 1.5) * 1.6;
+      item.mesh.position.y = item.initPos[1] + Math.sin(elapsedTime * 1.2 + idx * 1.2) * 1.5;
     });
 
     // Subtle wave pulsing

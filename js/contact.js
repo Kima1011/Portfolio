@@ -114,15 +114,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const pricingData = {
     'video': {
       'basic': {
-        price: '₹5,000 INR',
-        desc: 'Reels / Short-Form: ₹5,000 (Shooting & editing with sound mix either in Vertical or Horizontal).'
+        price: '₹3,000 INR',
+        desc: 'Reels / Short-Form: ₹3,000 (Shooting & editing with sound mix either in Vertical or Horizontal).'
       },
       'standard': {
-        price: '₹20,000 INR',
-        desc: 'Outstation Shooting & Editing (Commercial production; price negotiable, excluding accommodation).'
+        price: '₹15,000 INR',
+        desc: 'Outstation Shooting & Editing (Commercial production; price ₹15,000 negotiable, excluding accommodation).'
       },
       'premium': {
-        price: '₹20,000+ INR',
+        price: '₹15,000+ INR',
         desc: 'Outstation & Multi-Day Production (Shooting & editing campaign, excluding accommodation).'
       }
     },

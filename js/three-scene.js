@@ -813,41 +813,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // Instantiate 24 Camera Gears Distributed Throughout 3D Space
   // -------------------------------------------------------------
   const cameraGears = [
-    // Hero Cameras & Production Systems
-    { mesh: create3DCamera(0x38bdf8, 1.05), initPos: [34, 16, -10] },             // 1. Hero DSLR / Mirrorless Body (Cyan)
-    { mesh: create3DCinemaCamera(0xf59e0b, 0.95), initPos: [-38, 22, -14] },       // 2. RED / ARRI Cinema Camera (Amber)
-    { mesh: create3DDrone(0x38bdf8, 0.9), initPos: [12, 32, -22] },                // 3. 4K Aerial Drone Quadcopter
-    { mesh: create3DRangefinder(0x818cf8, 0.95), initPos: [42, -16, -14] },        // 4. Vintage Rangefinder Camera (Indigo)
-    { mesh: create3DActionCam(0x38bdf8, 0.85), initPos: [-16, -26, -12] },         // 5. Action Camera / GoPro
-    { mesh: create3DCamera(0xf59e0b, 0.9), initPos: [48, -28, -24] },              // 6. Secondary DSLR Body (Amber)
+    // --- ROW 1: TOP REGION (Y: +34 to +40, X: -72 to +72) ---
+    { mesh: create3DCinemaCamera(0xf59e0b, 0.95), initPos: [-72, 36, -24] },       // 1. Far Left Top: RED/ARRI Cinema Camera
+    { mesh: create3DDrone(0x38bdf8, 0.9), initPos: [-44, 38, -18] },               // 2. Mid-Left Top: 4K Aerial Drone
+    { mesh: create3DRingLight(0xf59e0b, 0.78), initPos: [-16, 36, -26] },          // 3. Center-Left Top: Studio Ring Light
+    { mesh: create3DShotgunMic(0x38bdf8, 0.85), initPos: [16, 38, -20] },          // 4. Center-Right Top: Shotgun Boom Mic
+    { mesh: create3DSoftbox(0x38bdf8, 0.75), initPos: [44, 35, -25] },            // 5. Mid-Right Top: Studio Softbox
+    { mesh: create3DSpeedlight(0xf59e0b, 0.85), initPos: [72, 38, -22] },         // 6. Far Right Top: Speedlight Flash
 
-    // Professional Lenses
-    { mesh: create3DWhiteTelephotoLens(0xf59e0b, 0.88), initPos: [-36, -6, -16] }, // 7. 70-200mm White Telephoto Zoom
-    { mesh: create3DPrimeLens(0x38bdf8, 0.92), initPos: [46, -2, -18] },            // 8. 85mm f/1.2 Fast Prime Lens
-    { mesh: create3DWhiteTelephotoLens(0x38bdf8, 0.8), initPos: [-48, 32, -26] },  // 9. Secondary Telephoto Lens
+    // --- ROW 2: UPPER-MID REGION (Y: +12 to +18, X: -70 to +70) ---
+    { mesh: create3DTripod(0x818cf8, 0.72), initPos: [-70, 15, -22] },            // 7. Far Left Upper-Mid: Pro Tripod
+    { mesh: create3DWhiteTelephotoLens(0xf59e0b, 0.88), initPos: [-42, 14, -16] },// 8. Mid-Left Upper-Mid: 70-200mm White Telephoto
+    { mesh: create3DFieldMonitor(0x818cf8, 0.85), initPos: [-15, 15, -24] },       // 9. Center-Left Upper-Mid: 7" Field Monitor
+    { mesh: create3DSDCard(0x38bdf8, 0.85), initPos: [18, 12, -26] },              // 10. Center-Right Upper-Mid: SD Memory Card (Cyan)
+    { mesh: create3DCamera(0x38bdf8, 1.05), initPos: [46, 15, -15] },             // 11. Mid-Right Upper-Mid: Hero DSLR / Mirrorless Body
+    { mesh: create3DReflector(0xf59e0b, 0.8), initPos: [70, 14, -24] },            // 12. Far Right Upper-Mid: Light Reflector
 
-    // Stabilizers & Heavy Support
-    { mesh: create3DGimbal(0x38bdf8, 0.82), initPos: [-44, -22, -20] },            // 10. Handheld 3-Axis Gimbal
-    { mesh: create3DTripod(0x818cf8, 0.72), initPos: [-52, 14, -26] },            // 11. Professional Tripod
-    { mesh: create3DTripod(0xf59e0b, 0.7), initPos: [-12, -36, -24] },             // 12. Secondary Tripod
+    // --- ROW 3: LOWER-MID REGION (Y: -12 to -18, X: -72 to +72) ---
+    { mesh: create3DGimbal(0x38bdf8, 0.82), initPos: [-72, -14, -22] },           // 13. Far Left Lower-Mid: 3-Axis Gimbal
+    { mesh: create3DCameraBag(0x38bdf8, 0.85), initPos: [-45, -16, -18] },         // 14. Mid-Left Lower-Mid: Camera Shoulder Bag
+    { mesh: create3DActionCam(0x38bdf8, 0.85), initPos: [-18, -14, -25] },         // 15. Center-Left Lower-Mid: Action Camera / GoPro
+    { mesh: create3DBattery(0xf59e0b, 0.85), initPos: [15, -15, -22] },             // 16. Center-Right Lower-Mid: Camera Battery Pack
+    { mesh: create3DPrimeLens(0x38bdf8, 0.92), initPos: [44, -14, -16] },           // 17. Mid-Right Lower-Mid: 85mm f/1.2 Fast Prime
+    { mesh: create3DRangefinder(0x818cf8, 0.95), initPos: [72, -15, -20] },        // 18. Far Right Lower-Mid: Vintage Rangefinder
 
-    // Studio Lighting & Modifiers
-    { mesh: create3DSoftbox(0x38bdf8, 0.75), initPos: [54, 20, -28] },             // 13. Studio Softbox
-    { mesh: create3DRingLight(0xf59e0b, 0.78), initPos: [24, 26, -24] },           // 14. Studio Ring Light
-    { mesh: create3DSpeedlight(0xf59e0b, 0.85), initPos: [38, -26, -20] },         // 15. Speedlight Flash
-    { mesh: create3DSpeedlight(0x38bdf8, 0.8), initPos: [-32, 2, -26] },           // 16. Secondary Speedlight
-    { mesh: create3DReflector(0xf59e0b, 0.8), initPos: [52, 6, -30] },             // 17. Light Reflector
-
-    // Audio & Monitoring
-    { mesh: create3DShotgunMic(0x38bdf8, 0.85), initPos: [-20, 30, -18] },         // 18. Shotgun Boom Microphone
-    { mesh: create3DFieldMonitor(0x818cf8, 0.85), initPos: [-26, 12, -15] },        // 19. 7-inch On-Camera Monitor
-
-    // Essential Accessories & Power
-    { mesh: create3DSDCard(0x38bdf8, 0.85), initPos: [28, 34, -18] },              // 20. SD Memory Card (Cyan)
-    { mesh: create3DSDCard(0xf59e0b, 0.85), initPos: [-32, -32, -20] },            // 21. SD Memory Card (Gold)
-    { mesh: create3DBattery(0xf59e0b, 0.85), initPos: [6, -34, -16] },              // 22. Camera Battery (Amber)
-    { mesh: create3DCameraBag(0x38bdf8, 0.85), initPos: [-50, -14, -26] },         // 23. Camera Shoulder Bag
-    { mesh: create3DCameraStrap(0x818cf8, 0.8), initPos: [-4, 34, -20] }           // 24. Camera Neck Strap
+    // --- ROW 4: BOTTOM REGION (Y: -34 to -40, X: -68 to +70) ---
+    { mesh: create3DSpeedlight(0x38bdf8, 0.8), initPos: [-68, -36, -25] },          // 19. Far Left Bottom: Secondary Speedlight
+    { mesh: create3DSDCard(0xf59e0b, 0.85), initPos: [-42, -37, -22] },           // 20. Mid-Left Bottom: SD Memory Card (Gold)
+    { mesh: create3DTripod(0xf59e0b, 0.7), initPos: [-15, -35, -28] },             // 21. Center-Left Bottom: Secondary Tripod
+    { mesh: create3DCameraStrap(0x818cf8, 0.8), initPos: [16, -38, -24] },          // 22. Center-Right Bottom: Camera Neck Strap
+    { mesh: create3DCamera(0xf59e0b, 0.9), initPos: [45, -36, -18] },              // 23. Mid-Right Bottom: Secondary DSLR Body (Amber)
+    { mesh: create3DWhiteTelephotoLens(0x38bdf8, 0.8), initPos: [70, -35, -26] }   // 24. Far Right Bottom: Secondary Telephoto Lens
   ];
 
   cameraGears.forEach(gear => {
@@ -891,22 +887,23 @@ document.addEventListener('DOMContentLoaded', () => {
     targetX += (mouseX - targetX) * 0.05;
     targetY += (mouseY - targetY) * 0.05;
 
-    mainGroup.rotation.y = elapsedTime * 0.025 + targetX * 0.008;
-    mainGroup.rotation.x = elapsedTime * 0.012 + targetY * 0.008;
+    // Responsive mouse parallax with gentle harmonic sway, WITHOUT circular revolving orbit
+    mainGroup.rotation.y = (targetX * 0.004) + Math.sin(elapsedTime * 0.22) * 0.025;
+    mainGroup.rotation.x = (targetY * 0.004) + Math.cos(elapsedTime * 0.18) * 0.016;
 
     // 3D Physics Tilt, Harmonic Bobbing, and Individual Rotation for All 24 Camera Gears
     cameraGears.forEach((item, idx) => {
-      const speed = 0.12 + (idx % 6) * 0.035;
       const dir = idx % 2 === 0 ? 1 : -1;
+      const speed = 0.2 + (idx % 5) * 0.04;
 
-      // Realistic 3D rotational tilt reacting to mouse position & elapsed time
-      item.mesh.rotation.x = Math.sin(elapsedTime * speed) * 0.28 + (targetY * 0.022 * dir);
-      item.mesh.rotation.y = elapsedTime * (0.15 * dir) + (targetX * 0.022 * dir);
-      item.mesh.rotation.z = Math.cos(elapsedTime * speed * 0.85) * 0.14;
+      // Realistic 3D rotational tilt on each item's OWN local axis (tumbling smoothly)
+      item.mesh.rotation.x = Math.sin(elapsedTime * speed + idx) * 0.24 + (targetY * 0.015 * dir);
+      item.mesh.rotation.y = elapsedTime * (0.2 * dir) + idx * 0.6;
+      item.mesh.rotation.z = Math.cos(elapsedTime * (speed * 0.8) + idx) * 0.16;
 
-      // Gentle floating buoyancy wave
-      item.mesh.position.y = item.initPos[1] + Math.sin(elapsedTime * 1.3 + idx * 0.95) * 1.6;
-      item.mesh.position.x = item.initPos[0] + Math.cos(elapsedTime * 0.8 + idx * 0.7) * 0.8;
+      // Gentle floating buoyancy wave (each item has its own distinct phase offset so they float organically)
+      item.mesh.position.y = item.initPos[1] + Math.sin(elapsedTime * 0.85 + idx * 1.35) * 1.8;
+      item.mesh.position.x = item.initPos[0] + Math.cos(elapsedTime * 0.65 + idx * 1.1) * 1.0;
     });
 
     renderer.render(scene, camera);

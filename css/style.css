@@ -618,6 +618,11 @@ ul, ol {
   border-color: rgba(16, 185, 129, 0.35);
 }
 
+.floating-badge-icon.indigo {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
 .floating-badge-img {
   width: 32px;
   height: 32px;
@@ -638,28 +643,28 @@ ul, ol {
   animation: float-1 4.5s ease-in-out infinite;
 }
 
+.badge-web {
+  bottom: 12%;
+  left: -28px;
+  border-color: rgba(16, 185, 129, 0.45);
+  color: var(--emerald-400);
+  animation: float-3 5.2s ease-in-out infinite 0.8s;
+}
+
+.badge-adsense {
+  top: 14%;
+  right: -28px;
+  border-color: rgba(99, 102, 241, 0.45);
+  color: var(--indigo-500);
+  animation: float-2 5.6s ease-in-out infinite 1.2s;
+}
+
 .badge-photo {
-  bottom: 24%;
+  bottom: 18%;
   right: -28px;
   border-color: rgba(245, 158, 11, 0.45);
   color: var(--amber-400);
-  animation: float-2 5s ease-in-out infinite 0.6s;
-}
-
-.badge-drone {
-  bottom: -18px;
-  left: 0px;
-  border-color: rgba(56, 189, 248, 0.45);
-  color: var(--cyan-400);
-  animation: float-3 5.5s ease-in-out infinite 1.2s;
-}
-
-.badge-lens {
-  top: 48%;
-  left: -32px;
-  border-color: rgba(16, 185, 129, 0.45);
-  color: var(--emerald-400);
-  animation: float-2 6s ease-in-out infinite 1.8s;
+  animation: float-1 5s ease-in-out infinite 0.5s;
 }
 
 /* Standalone Floating 3D Camera Gear Items */
@@ -678,10 +683,10 @@ ul, ol {
 }
 
 .cam-float-clapper {
-  top: -15px;
-  right: -18px;
-  width: 65px;
-  height: 65px;
+  top: -24px;
+  right: 18px;
+  width: 62px;
+  height: 62px;
   animation: float-2 5.5s ease-in-out infinite 0.7s;
 }
 .cam-float-clapper img { width: 100%; height: 100%; }

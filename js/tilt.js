@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const tiltElements = document.querySelectorAll('.card-3d, .hero-card-3d, .floating-badge, .project-thumb-box, .service-icon-box');
+  const tiltElements = document.querySelectorAll('.card-3d, .hero-card-3d, .floating-badge, .floating-cam-item, .project-thumb-box, .service-icon-box');
 
   // Disable on mobile/touch screens for performance
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;

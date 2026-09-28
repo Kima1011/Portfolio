@@ -847,6 +847,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   cameraGears.forEach(gear => {
+    gear.mesh.scale.multiplyScalar(0.78);
     gear.mesh.position.set(...gear.initPos);
     mainGroup.add(gear.mesh);
   });

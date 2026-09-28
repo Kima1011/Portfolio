@@ -15,7 +15,7 @@ A multi-page portfolio website featuring interactive 3D WebGL animations, physic
   - `services.html`: Detailed service packages, client workflow milestones, and dynamic project cost estimator.
   - `project-detail.html`: Case study summary page with short information, key takeaways, and production milestones.
   - `contact.html`: Contact information inquiry form, quick copy buttons, direct phone/email links, and Instagram integration.
-- **Direct Instagram Integration**: Connected to [@kim.molshoy](https://www.instagram.com/kim.molshoy?utm_source=qr).
+- **Direct Instagram Integration**: Connected to [@m0lsh0y.fotografi](https://www.instagram.com/m0lsh0y.fotografi?utm_source=qr).
 - **100% Responsive Design**: Clean mobile navigation drawer, fluid typography, and glassmorphism styling.
 
 ---
@@ -51,6 +51,6 @@ The portfolio is equipped with an automated email dispatch endpoint at [`api/con
 - **Role**: Finance Analyst & Creative Freelancer
 - **Location**: Kolkata, India
 - **Email**: [kimfrozz96@gmail.com](mailto:kimfrozz96@gmail.com)
-- **Instagram**: [https://www.instagram.com/kim.molshoy](https://www.instagram.com/kim.molshoy?utm_source=qr)
+- **Instagram**: [https://www.instagram.com/m0lsh0y.fotografi](https://www.instagram.com/m0lsh0y.fotografi?utm_source=qr)
 - **GitHub**: [https://github.com/Kima1011/Portfolio](https://github.com/Kima1011/Portfolio)
 

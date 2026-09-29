@@ -9,6 +9,12 @@
   <meta name="author" content="Kim Molshoy (Lalfamkima)">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://molshoyfotografi.vercel.app/">
+  <script>
+    if (window.location.pathname.endsWith('/index.html')) {
+      const cleanPath = window.location.pathname.replace(/\/index\.html$/, '') || '/';
+      window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+    }
+  </script>
 
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
@@ -82,13 +88,13 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="nav-logo">
+      <a href="/" class="nav-logo">
         <img src="assets/images/logo.jpg" alt="Molshoy Fotografi Logo" class="nav-logo-img">
         <span>Molshoy <span style="color: var(--amber-400);">Fotografi</span></span>
       </a>
 
       <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="/" class="nav-link active">Home</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="projects.html" class="nav-link">Projects</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
@@ -416,7 +422,7 @@
   <!-- Corporate Rigor Meets Creative Energy Section -->
   <section class="section" style="background: rgba(10, 15, 28, 0.6);">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;" class="reveal-init">
+      <div class="about-summary-grid reveal-init">
         <div>
           <div class="section-tag amber">About Kim</div>
           <h2 class="section-title">Professional Bio</h2>
@@ -426,7 +432,7 @@
           <p style="font-size: 1.05rem; line-height: 1.8;">
             Alongside my corporate career, I work in <strong>video production</strong>, <strong>event photography</strong>, <strong>web development</strong>, and <strong>digital monetization</strong>, applying structured planning, accountability, and reliable execution to every project.
           </p>
-          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+          <div class="about-summary-actions">
             <a href="about.html" class="btn btn-primary">
               <span>Read Full Background</span>
               <i class="fa-solid fa-arrow-right"></i>
@@ -438,7 +444,7 @@
           </div>
         </div>
 
-        <div class="card-3d" style="padding: 2.5rem; background: var(--bg-card);">
+        <div class="card-3d info-summary-card" style="background: var(--bg-card);">
           <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">
             <i class="fa-solid fa-trophy" style="color: var(--amber-400); margin-right: 0.5rem;"></i>
             Professional Background
@@ -499,7 +505,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
+          <a href="/" class="nav-logo">
             <img src="assets/images/logo.jpg" alt="Molshoy Fotografi Logo" class="nav-logo-img">
             <span>Molshoy <span style="color: var(--amber-400);">Fotografi</span></span>
           </a>
@@ -522,7 +528,7 @@
         <div>
           <h4 class="footer-title">Navigation</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="about.html">About Me</a></li>
             <li><a href="projects.html">Portfolio & Gallery</a></li>
             <li><a href="services.html">Freelance Services</a></li>

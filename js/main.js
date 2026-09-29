@@ -3,6 +3,19 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Clean 'index.html' from URL bar if present
+  if (window.location.pathname.endsWith('/index.html') || window.location.pathname === '/index.html') {
+    const cleanPath = window.location.pathname.replace(/\/index\.html$/, '') || '/';
+    window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+  }
+
+  // Fallback for local file:// previews
+  if (window.location.protocol === 'file:') {
+    document.querySelectorAll('a[href="/"]').forEach(link => {
+      link.setAttribute('href', 'index.html');
+    });
+  }
+
   // 1. Navbar Scroll Blur & Styling
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {

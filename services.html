@@ -42,13 +42,13 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="nav-logo">
+      <a href="/" class="nav-logo">
         <img src="assets/images/logo.jpg" alt="Molshoy Fotografi Logo" class="nav-logo-img">
         <span>Molshoy <span style="color: var(--amber-400);">Fotografi</span></span>
       </a>
 
       <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="/" class="nav-link">Home</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="projects.html" class="nav-link">Projects</a></li>
         <li><a href="services.html" class="nav-link active">Services</a></li>
@@ -86,9 +86,9 @@
       <div style="display: flex; flex-direction: column; gap: 4rem;">
 
         <!-- Service 1: Video Editing -->
-        <div id="video" class="card-3d reveal-init" style="padding: 3rem;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-            <div>
+        <div id="video" class="card-3d reveal-init service-breakdown-card">
+          <div class="service-detail-grid">
+            <div class="service-detail-content">
               <div class="service-icon-box">
                 <img src="assets/images/icons/icon_3d_cinema.png" alt="Cinematic Video Production" class="service-3d-icon">
               </div>
@@ -109,16 +109,16 @@
                 <span>Discuss Video Project</span>
               </a>
             </div>
-            <div style="height: 340px; border-radius: var(--radius-md); overflow: hidden;">
-              <img src="assets/images/video_showcase.jpg" alt="Video Editing" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="service-detail-img-box">
+              <img src="assets/images/video_showcase.jpg" alt="Video Editing">
             </div>
           </div>
         </div>
 
         <!-- Service 2: Event Photography -->
-        <div id="photo" class="card-3d reveal-init" style="padding: 3rem;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-            <div style="order: 2;">
+        <div id="photo" class="card-3d reveal-init service-breakdown-card">
+          <div class="service-detail-grid">
+            <div class="service-detail-content" style="order: 2;">
               <div class="service-icon-box" style="background: rgba(245, 158, 11, 0.1); color: var(--amber-400); border-color: rgba(245, 158, 11, 0.2);">
                 <img src="assets/images/icons/icon_3d_camera.png" alt="Event Photography & Portraits" class="service-3d-icon">
               </div>
@@ -137,16 +137,16 @@
                 <span>Reserve Photoshoot</span>
               </a>
             </div>
-            <div style="height: 340px; border-radius: var(--radius-md); overflow: hidden; order: 1;">
-              <img src="assets/images/photo_showcase.jpg" alt="Event Photography" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="service-detail-img-box" style="order: 1;">
+              <img src="assets/images/photo_showcase.jpg" alt="Event Photography">
             </div>
           </div>
         </div>
 
         <!-- Service 3: Modern Web Development -->
-        <div id="web" class="card-3d reveal-init" style="padding: 3rem;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-            <div>
+        <div id="web" class="card-3d reveal-init service-breakdown-card">
+          <div class="service-detail-grid">
+            <div class="service-detail-content">
               <div class="service-icon-box" style="background: rgba(16, 185, 129, 0.1); color: var(--emerald-400); border-color: rgba(16, 185, 129, 0.2);">
                 <img src="assets/images/icons/icon_3d_webdev.png" alt="Custom 3D Web Development" class="service-3d-icon">
               </div>
@@ -165,16 +165,16 @@
                 <span>Build Your Website</span>
               </a>
             </div>
-            <div style="height: 340px; border-radius: var(--radius-md); overflow: hidden;">
-              <img src="assets/images/webdev_showcase.jpg" alt="Web Development" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="service-detail-img-box">
+              <img src="assets/images/webdev_showcase.jpg" alt="Web Development">
             </div>
           </div>
         </div>
 
         <!-- Service 4: Google AdSense & Monetization -->
-        <div id="adsense" class="card-3d reveal-init" style="padding: 3rem;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-            <div style="order: 2;">
+        <div id="adsense" class="card-3d reveal-init service-breakdown-card">
+          <div class="service-detail-grid">
+            <div class="service-detail-content" style="order: 2;">
               <div class="service-icon-box" style="background: rgba(99, 102, 241, 0.1); color: var(--indigo-500); border-color: rgba(99, 102, 241, 0.2);">
                 <img src="assets/images/icons/icon_3d_adsense.png" alt="Google AdSense & Monetization" class="service-3d-icon">
               </div>
@@ -193,8 +193,8 @@
                 <span>Request Monetization Audit</span>
               </a>
             </div>
-            <div style="height: 340px; border-radius: var(--radius-md); overflow: hidden; order: 1;">
-              <img src="assets/images/adsense_showcase.jpg" alt="AdSense Optimization" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="service-detail-img-box" style="order: 1;">
+              <img src="assets/images/adsense_showcase.jpg" alt="AdSense Optimization">
             </div>
           </div>
         </div>
@@ -212,7 +212,7 @@
         <p class="section-desc">Get a fast ballpark estimate in INR (₹) for your upcoming project scope.</p>
       </div>
 
-      <div class="card-3d reveal-init" style="max-width: 760px; margin: 0 auto; padding: 2.8rem;">
+      <div class="card-3d reveal-init info-summary-card" style="max-width: 760px; margin: 0 auto;">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="estimator-service">Select Service</label>
@@ -234,9 +234,9 @@
           </div>
         </div>
 
-        <div style="background: rgba(8, 11, 18, 0.8); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.8rem; margin: 2rem 0; text-align: center;">
+        <div style="background: rgba(8, 11, 18, 0.8); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem 1rem; margin: 2rem 0; text-align: center;">
           <span style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-dim); text-transform: uppercase;">Estimated Investment</span>
-          <div id="estimator-total" style="font-size: 2.8rem; font-weight: 800; color: var(--cyan-400); margin: 0.4rem 0;">₹18,000 INR</div>
+          <div id="estimator-total" style="font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; color: var(--cyan-400); margin: 0.4rem 0;">₹18,000 INR</div>
           <p id="estimator-note" style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.6rem; font-weight: 500;">
             Advance Website (Includes interactive 3D WebGL features, Chatbot, Email confirmation & inquiry forms).
           </p>
@@ -262,7 +262,7 @@
         <p class="section-desc">Streamlined corporate discipline applied to every creative deliverable.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem;">
+      <div class="workflow-grid">
         <div class="card-3d reveal-init" style="padding: 2.2rem;">
           <span style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800; color: var(--cyan-400);">01</span>
           <h3 style="font-size: 1.25rem; margin: 0.8rem 0 0.5rem 0;">Discovery & Brief</h3>
@@ -321,7 +321,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
+          <a href="/" class="nav-logo">
             <img src="assets/images/logo.jpg" alt="Molshoy Fotografi Logo" class="nav-logo-img">
             <span>Molshoy <span style="color: var(--amber-400);">Fotografi</span></span>
           </a>
@@ -344,7 +344,7 @@
         <div>
           <h4 class="footer-title">Navigation</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="about.html">About Me</a></li>
             <li><a href="projects.html">Portfolio & Gallery</a></li>
             <li><a href="services.html">Freelance Services</a></li>

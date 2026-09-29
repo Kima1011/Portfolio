@@ -1639,6 +1639,14 @@ textarea.form-control {
   color: var(--text-dim);
 }
 
+.footer-bottom .footer-tech-note,
+.footer-bottom p:last-child {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+}
+
 /* ==========================================================================
    Responsive Grid & Layout Helpers
    ========================================================================== */

@@ -215,6 +215,119 @@
   }
 }
 
+/* ==========================================================================
+   Service Section 3D Flip Card Scroll Dynamics
+   ========================================================================== */
+.service-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  perspective: 1600px;
+  position: relative;
+}
+
+.service-breakdown-card {
+  transform-style: preserve-3d;
+  transform-origin: center top;
+  will-change: transform, opacity, filter, box-shadow;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease,
+              filter 0.4s ease,
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  position: relative;
+}
+
+/* 3D Flip entrance state */
+.service-breakdown-card.flip-enter {
+  opacity: 0.45;
+  filter: blur(2px);
+}
+
+/* 3D Flip active / focused in reading viewport */
+.service-breakdown-card.flip-active {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* 3D Flip state when scrolling past towards top */
+.service-breakdown-card.flip-exit {
+  opacity: 0.75;
+  filter: blur(0.5px);
+}
+
+/* Unique color glow highlights when card flips into active focus */
+.service-breakdown-card#video.flip-active {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+              0 0 35px rgba(56, 189, 248, 0.2) !important;
+}
+
+.service-breakdown-card#photo.flip-active {
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+              0 0 35px rgba(245, 158, 11, 0.2) !important;
+}
+
+.service-breakdown-card#web.flip-active {
+  border-color: rgba(16, 185, 129, 0.45) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+              0 0 35px rgba(16, 185, 129, 0.2) !important;
+}
+
+.service-breakdown-card#adsense.flip-active {
+  border-color: rgba(99, 102, 241, 0.45) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+              0 0 35px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Light sheen reflection sweeping across card during flip */
+.service-breakdown-card::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(135deg, transparent 42%, rgba(255, 255, 255, 0.05) 50%, transparent 58%);
+  pointer-events: none;
+  opacity: 0;
+  transform: rotate(25deg) translateY(-80px);
+  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-breakdown-card.flip-active::after {
+  opacity: 1;
+  transform: rotate(25deg) translateY(0);
+}
+
+/* Service Flip Index Badge */
+.service-flip-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 5;
+  transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.service-breakdown-card.flip-active .service-flip-badge {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

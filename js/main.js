@@ -189,4 +189,89 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial run
     handleProjectScroll();
   }
+
+  // 6. Service Breakdown Cards Continuous 3D Flip on Scroll
+  const serviceCards = document.querySelectorAll('.service-breakdown-card');
+  if (serviceCards.length > 0) {
+    let tickingService = false;
+
+    function handleServiceFlipScroll() {
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = viewportHeight / 2;
+
+      let closestServiceCard = null;
+      let minDistance = Infinity;
+
+      serviceCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const distFromCenter = cardCenter - viewportCenter;
+        const normalizedDist = distFromCenter / (viewportHeight / 2); // -1.0 to +1.0
+
+        if (Math.abs(distFromCenter) < minDistance) {
+          minDistance = Math.abs(distFromCenter);
+          closestServiceCard = card;
+        }
+
+        // Apply 3D perspective flip if not currently hovered by mouse
+        if (!card.matches(':hover')) {
+          if (rect.top > viewportHeight) {
+            // Below viewport: ready to flip up
+            card.classList.remove('flip-active', 'flip-exit');
+            card.classList.add('flip-enter');
+            card.style.transform = 'perspective(1600px) rotateX(22deg) translateY(55px) scale(0.93)';
+          } else if (rect.bottom < 0) {
+            // Far above viewport
+            card.classList.remove('flip-enter', 'flip-active');
+            card.classList.add('flip-exit');
+            card.style.transform = 'perspective(1600px) rotateX(-14deg) translateY(-25px) scale(0.96)';
+          } else {
+            // In viewport: dynamically interpolate 3D flip angle based on scroll
+            let rotateX = 0;
+            let translateY = 0;
+            let scale = 1;
+
+            if (normalizedDist > 0) {
+              const progress = Math.min(1, normalizedDist);
+              rotateX = progress * 20; // 0deg up to 20deg
+              translateY = progress * 35; // 0 up to 35px
+              scale = 1 - (progress * 0.06); // 1.0 down to 0.94
+              card.classList.add('flip-enter');
+              card.classList.remove('flip-exit');
+            } else {
+              const progress = Math.min(1, Math.abs(normalizedDist));
+              rotateX = progress * -12; // 0deg to -12deg
+              translateY = progress * -18; // 0 to -18px
+              scale = 1 - (progress * 0.03); // 1.0 down to 0.97
+              card.classList.add('flip-exit');
+              card.classList.remove('flip-enter');
+            }
+
+            card.style.transform = `perspective(1600px) rotateX(${rotateX.toFixed(1)}deg) translateY(${translateY.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+          }
+        }
+      });
+
+      // Mark the active card currently in reading view
+      serviceCards.forEach(card => {
+        if (card === closestServiceCard && minDistance < viewportHeight * 0.42) {
+          card.classList.add('flip-active');
+        } else {
+          card.classList.remove('flip-active');
+        }
+      });
+
+      tickingService = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!tickingService) {
+        window.requestAnimationFrame(handleServiceFlipScroll);
+        tickingService = true;
+      }
+    }, { passive: true });
+
+    // Initial check on load
+    handleServiceFlipScroll();
+  }
 });

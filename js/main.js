@@ -116,4 +116,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counterElements.forEach(el => counterObserver.observe(el));
   }
+
+  // 5. Project Section Parallax & Scroll Dynamics
+  const projectCards = document.querySelectorAll('.project-card');
+  const projectSection = document.querySelector('.project-showcase-section, #featured-projects');
+  const ambientBackdrop = document.querySelector('.project-ambient-backdrop');
+
+  if (projectCards.length > 0) {
+    let ticking = false;
+
+    function handleProjectScroll() {
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = viewportHeight / 2;
+
+      let closestCard = null;
+      let minDistance = Infinity;
+
+      projectCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+
+        // Check if card is near or within viewport
+        if (rect.bottom >= -120 && rect.top <= viewportHeight + 120) {
+          // Center distance for focal spotlight
+          const cardCenter = rect.top + rect.height / 2;
+          const distToCenter = Math.abs(viewportCenter - cardCenter);
+
+          if (distToCenter < minDistance) {
+            minDistance = distToCenter;
+            closestCard = card;
+          }
+
+          // Parallax camera depth on thumbnail
+          const scrollProgress = ((rect.top + rect.height / 2) - viewportCenter) / (viewportHeight / 2);
+          const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
+          const parallaxOffset = clampedProgress * -16;
+
+          const thumb = card.querySelector('.project-thumb');
+          if (thumb && !card.matches(':hover')) {
+            thumb.style.transform = `scale(1.08) translateY(${parallaxOffset.toFixed(1)}px)`;
+          }
+        }
+      });
+
+      // Update focal highlight when near center
+      projectCards.forEach(card => {
+        if (card === closestCard && minDistance < 260) {
+          card.classList.add('scroll-focus');
+        } else {
+          card.classList.remove('scroll-focus');
+        }
+      });
+
+      // Shift ambient backdrop with scroll
+      if (ambientBackdrop && projectSection) {
+        const secRect = projectSection.getBoundingClientRect();
+        if (secRect.top <= viewportHeight && secRect.bottom >= 0) {
+          const shiftY = ((secRect.top - viewportHeight / 3) / viewportHeight) * 50;
+          ambientBackdrop.style.transform = `translate(-50%, ${shiftY.toFixed(1)}px)`;
+        }
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleProjectScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial run
+    handleProjectScroll();
+  }
 });

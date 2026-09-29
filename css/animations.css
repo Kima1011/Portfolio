@@ -104,6 +104,117 @@
   transition-delay: 0.6s;
 }
 
+/* ==========================================================================
+   Project Section 3D Scroll Animations & Dynamics
+   ========================================================================== */
+.project-showcase-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient Radial Glow that shifts smoothly with scroll */
+.project-ambient-backdrop {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 650px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.09) 0%, rgba(245, 158, 11, 0.05) 45%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 3D Perspective Card Container */
+.projects-grid {
+  perspective: 1200px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cinematic 3D Scroll Entrance for Project Cards */
+.project-card.reveal-init {
+  opacity: 0;
+  transform: perspective(1200px) translateY(70px) rotateX(15deg) scale(0.93);
+  filter: blur(4px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  will-change: opacity, transform, filter;
+}
+
+.project-card.reveal-init.revealed {
+  opacity: 1;
+  transform: perspective(1200px) translateY(0) rotateX(0deg) scale(1);
+  filter: blur(0);
+}
+
+/* Card Focal / Center Spotlight when scrolling past */
+.project-card.scroll-focus {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 20px 45px -10px rgba(56, 189, 248, 0.22),
+              0 0 30px rgba(245, 158, 11, 0.12) !important;
+}
+
+.project-card.scroll-focus .project-category-tag {
+  border-color: var(--cyan-400);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+/* Parallax Inner Thumb Frame */
+.project-thumb-box {
+  overflow: hidden;
+  position: relative;
+}
+
+.project-thumb-box .project-thumb {
+  transform: scale(1.08) translateY(0);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Hover scales up while preserving clarity */
+.project-card:hover .project-thumb {
+  transform: scale(1.15) !important;
+}
+
+/* Section Header Scroll Accent Line */
+.project-scroll-indicator {
+  display: flex;
+  justify-content: center;
+  margin: 0.8rem 0 1.2rem;
+}
+
+.scroll-accent-line {
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, transparent, var(--cyan-400), var(--amber-400), transparent);
+  background-size: 200% 100%;
+  animation: shimmer-line 3s infinite ease-in-out;
+}
+
+@keyframes shimmer-line {
+  0% {
+    background-position: -100% 0;
+    width: 50px;
+  }
+  50% {
+    background-position: 100% 0;
+    width: 85px;
+  }
+  100% {
+    background-position: 300% 0;
+    width: 50px;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
